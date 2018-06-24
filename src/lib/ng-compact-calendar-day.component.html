@@ -1,0 +1,13 @@
+<div [ngbPopover]="popContent" #p="ngbPopover" (click)="showDay()" >
+    <div class="day-name">{{ day.dayName }}</div>
+    <div class="day-number">{{ day.dayNumber }}</div>
+    <div class="day-events">
+        <span *ngFor="let evt of day.events" [ngStyle]="{'background-color':evt.color}"></span>
+    </div>
+    <ng-template #popContent let-day="day">
+        <div *ngFor="let evt of day.events" class="text-nowrap"><span class="event-color" [ngStyle]="{'background-color':evt.color}"></span>{{evt.name}}</div>
+        <div *ngIf="day.events.length==0">
+            No events
+        </div>
+    </ng-template>
+</div>

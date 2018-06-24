@@ -1,0 +1,22 @@
+<div class="calendar-overview">
+    <div class="header">
+        <div class="left" (click)="prevMonth()"></div>
+        <h1>{{ title }}</h1>
+        <div class="right" (click)="nextMonth()"></div>
+    </div>
+    <div class="month new">
+        <div class="week" *ngFor="let week of weeks">
+            <ng-compact-calendar-day 
+                *ngFor="let day of week.days"  
+                [day]="day" class="day" 
+                [ngClass]="{other: current.month()!=day.date.month(), today: today.isSame(day.date, 'day')}">
+            </ng-compact-calendar-day>
+        </div>
+    </div>
+    <div class="legend">
+        <span class="entry" *ngFor="let cat of categories" >
+            <span class="entry-legend-color" [ngStyle]="{'background-color':cat.color}"></span>
+            {{ cat.name }}
+        </span>
+    </div>
+</div>
